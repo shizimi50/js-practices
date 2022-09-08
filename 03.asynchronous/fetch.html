@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非同期処理</title>
+</head>
+<body>
+    <h1>非同期処理を学ぶ</h1>
+</body>
+<script>
+'use strict';
+
+async function getData(url, data) {
+    try {
+        const response = await fetch(url);
+        if (response.status) {
+            console.log(response.status)
+            return response.text();
+        } else {
+            console.error("fetchHtml is failed! url : " + url + ", error : status is not 200");
+            return null;
+        }
+    }catch(error) {
+        console.error("fetchHtml is failed! url : " + url + ", error : " + error);
+        return null;
+    }
+}
+
+getData('https://bootcamp.fjord.jp')
+  .then(data => {
+    console.log(data); 
+});
+</script>
+</html>
