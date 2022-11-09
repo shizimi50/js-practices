@@ -20,17 +20,9 @@ process.stdout.write(oneSpace.repeat(startWday * 3))
 const firstSaturday = 7 - startWday
 
 for (let i = 1; i <= lastDate.getDate(); ++i) {
-  if (String(i).length > 1) { // 二行の場合
-    if (i === firstSaturday || (i - firstSaturday) % 7 === 0) {
-      console.log(i + oneSpace)
-    } else {
-      process.stdout.write(i + oneSpace)
-    }
+  if (i === firstSaturday || (i - firstSaturday) % 7 === 0) {
+    console.log(String(i))
   } else {
-    if (i === firstSaturday || (i - firstSaturday) % 7 === 0) {
-      console.log(oneSpace + i + oneSpace)
-    } else {
-      process.stdout.write(oneSpace + i + oneSpace) // 一行の場合
-    }
+    process.stdout.write(String(i).padStart(2, oneSpace) + oneSpace)
   }
 }
